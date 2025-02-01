@@ -19,12 +19,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install PM2 globally on EC2
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.PRIVATE_SSH_KEY }} ubuntu@3.110.107.179 << 'EOF'
-            sudo npm install pm2 -g
-          EOF
-
       - name: Execute remote SSH commands
         uses: appleboy/ssh-action@v0.1.7
         with:
