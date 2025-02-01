@@ -28,8 +28,4 @@ jobs:
           port: 22
           script: |
             cd aws
-            git pull
-            rm -rf node_modules package-lock.json .next
-            npm install --legacy-peer-deps
-            npm run build
-            nohup npm run start > output.log 2>&1 &
+            ls
