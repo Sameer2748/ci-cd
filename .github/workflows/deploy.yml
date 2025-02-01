@@ -22,10 +22,13 @@ jobs:
       - name: Execute remote SSH commands
         uses: appleboy/ssh-action@v0.1.7 # Use the latest version
         with:
-          host: 13.201.245.31
+          host: 3.110.107.179
           username: ubuntu
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
           script: |
             cd aws
-            ls
+            git pull
+            npm install --legacy-peer-deps
+            npm run build
+            nohup npm run start > output.log 2>&1 &
