@@ -39,14 +39,4 @@ jobs:
             # Build the project
             npm run build
 
-            # Check for PM2 processes and stop the existing one
-            pm2 stop next-app || echo "No process to stop"
-
-            # Start the app with PM2
-            pm2 start npm --name "next-app" -- run start || (echo "Failed to start app" && exit 1)
-
-            # Save PM2 process list
-            pm2 save
-
-            # Enable PM2 to restart on reboot
-            pm2 startup systemd -u ubuntu --hp /home/ubuntu
+            PORT=3001 npm run start
